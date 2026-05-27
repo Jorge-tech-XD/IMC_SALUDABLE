@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/IMC_SALUDABLE', // 👈 ESTO ES CRUCIAL: Fuerza a que use rutas relativas y funcione en GitHub Pages
+  base: '/IMC_SALUDABLE/',
 })
