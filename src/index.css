@@ -1,83 +1,397 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f4f7fb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f1f5f9;
+  color: #1e293b;
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
 }
 
-.container {
-  max-width: 500px;
-  margin: auto;
-  padding: 40px;
-  text-align: center;
+/* Layout del Dashboard */
+.dashboard-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+/* Tarjeta del Formulario */
+.medical-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e2e8f0;
+}
+
+.medical-header {
+  margin-bottom: 25px;
+}
+
+.medical-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 5px;
 }
 
 h1 {
-  color: #1f2937;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
 }
 
+.subtitle {
+  color: #64748b;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 4px;
+}
+
+/* Elementos del Formulario */
 .form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  gap: 6px;
+}
+
+.input-group-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.input-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
 }
 
 input {
   padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  font-size: 14px;
+  background-color: #f8fafc;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-button {
-  padding: 12px;
+input:focus {
+  border-color: #0ea5e9;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.15);
+}
+
+.btn-medical {
+  padding: 14px;
   border: none;
-  border-radius: 10px;
-  background: #2563eb;
+  border-radius: 8px;
+  background: #0ea5e9;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 8px;
+  transition: background 0.2s;
 }
 
-button:hover {
-  background: #1d4ed8;
+.btn-medical:hover {
+  background: #0284c7;
 }
 
-.result-card {
-  margin-top: 30px;
-  background: white;
-  padding: 20px;
-  border-radius: 15px;
+/* Área del Reporte */
+.report-container {
+  width: 100%;
 }
 
-.bar-container {
-  margin-top: 30px;
+.empty-state {
+  background: #ffffff;
+  padding: 60px;
+  text-align: center;
+  color: #94a3b8;
+  font-style: italic;
+  border-radius: 16px;
+  border: 2px dashed #cbd5e1;
 }
 
-.bar {
+/* Hoja Membretada del reporte */
+.printable-report {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+  border: 1px solid #e2e8f0;
   position: relative;
-  height: 20px;
-  border-radius: 20px;
-  background: linear-gradient(
-    to right,
-    #3b82f6,
-    #22c55e,
-    #facc15,
-    #ef4444
-  );
 }
 
-.indicator {
-  position: absolute;
-  top: -5px;
-  width: 15px;
-  height: 30px;
-  background: black;
-  border-radius: 5px;
-  transform: translateX(-50%);
-}
-
-.labels {
+.report-header {
   display: flex;
   justify-content: space-between;
-  margin-top: 10px;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.report-header h2 {
+  font-size: 16px;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.report-subtitle {
   font-size: 12px;
+  color: #0ea5e9;
+  margin: 4px 0 0 0;
+  font-weight: 600;
+}
+
+.report-meta {
+  text-align: right;
+  font-size: 12px;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.report-divider {
+  border: 0;
+  height: 2px;
+  background-color: #0ea5e9;
+  margin: 20px 0;
+}
+
+.report-section {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+.report-section h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #475569;
+  border-left: 3px solid #0ea5e9;
+  padding-left: 8px;
+  margin: 0 0 12px 0;
+}
+
+.patient-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.results-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.result-metric {
+  flex: 1;
+  background: #f0fdf4;
+  border: 1.5px solid #bbf7d0;
+  padding: 15px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.result-metric:first-child {
+  background: #f0f9ff;
+  border-color: #bae6fd;
+}
+
+.metric-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.metric-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* ==========================================
+   ESTILOS DE LA NUEVA GRÁFICA CON FLECHA
+   ========================================== */
+.report-bar-container {
+  margin: 45px 0 20px 0;
+  padding: 0 10px;
+}
+
+.report-bar {
+  position: relative;
+  height: 16px;
+  border-radius: 8px;
+  /* Gradiente médico exacto */
+  background: linear-gradient(to right, #38bdf8, #4ade80, #facc15, #f87171);
+}
+
+/* Indicador con flecha y etiqueta flotante */
+.report-indicator {
+  position: absolute;
+  top: -32px; /* Sube el bloque para hacer espacio a la etiqueta */
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: left 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.arrow-label {
+  background-color: #0f172a;
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #0f172a; /* Dibuja el triángulo hacia abajo */
+  margin-top: 1px;
+}
+
+.report-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.report-labels span {
+  flex: 1;
+}
+.report-labels .lbl-bajo { text-align: left; color: #0284c7; }
+.report-labels .lbl-normal { text-align: center; color: #166534; }
+.report-labels .lbl-sobre { text-align: center; color: #854d0e; }
+.report-labels .lbl-obeso { text-align: right; color: #991b1b; }
+
+/* Recomendaciones y Firmas */
+.recommendation-box {
+  background: #f8fafc;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #334155;
+}
+
+.report-footer-signature {
+  margin-top: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signature-line {
+  width: 220px;
+  height: 1px;
+  background-color: #94a3b8;
+  margin-bottom: 8px;
+}
+
+.report-footer-signature p {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0;
+}
+
+.btn-print {
+  width: 100%;
+  margin-top: 30px;
+  padding: 14px;
+  background-color: #1e293b;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.btn-print:hover {
+  background-color: #0f172a;
+}
+
+/* ==========================================
+   MÓDULO DE REGLAS DE IMPRESIÓN (PDF NATIVO)
+   ========================================== */
+@media print {
+  body {
+    background-color: #ffffff !important;
+    padding: 0;
+    margin: 0;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .dashboard-container {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .printable-report {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Fuerza a los navegadores a imprimir los colores de fondo del degradado */
+  .report-bar {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  
+  .arrow-label {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
+  }
+}
+
+@media (max-width: 850px) {
+  .dashboard-container {
+    grid-template-columns: 1fr;
+  }
+  body {
+    padding: 20px 10px;
+  }
 }
